@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { useQuery, gql } from '@apollo/client'
 import RoundedButton from './RoundedButton'
+import ShareButton from './ShareButton'
 
 // graphQL query
 const PROMPT_QUERY = gql`
@@ -45,6 +46,12 @@ export default function Prompt () {
           refetch()
         }}
       />
+
+      {!loading && data && data.prompt && (
+        <ShareButton
+          promptMessage={data.prompt.title}
+        />
+      )}
     </View>
   )
 }
