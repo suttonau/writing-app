@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
 
 // Instantiate required constructor fields
 const cache = new InMemoryCache()
-const BASE_URL = 'http://http://localhost:4000'
+const BASE_URL = 'http://localhost:4000'
 const httpLink = createHttpLink({
   uri: BASE_URL
 })
