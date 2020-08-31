@@ -2,6 +2,9 @@ import { StatusBar } from 'expo-status-bar'
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
+import client from './ApolloClient'
+import { ApolloProvider } from '@apollo/client'
+
 import RoundedButton from './components/RoundedButton'
 
 export default function App () {
@@ -16,16 +19,18 @@ export default function App () {
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: color }]}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <RoundedButton
-        backgroundColor='teal'
-        text='Next'
-        textColor='white'
-        onPress={() => setColor(randomRgb())}
-      />
-      <StatusBar style='auto' />
-    </View>
+    <ApolloProvider client={client}>
+      <View style={[styles.container, { backgroundColor: color }]}>
+        <Text style={{ color: 'white' }}>Open up App.js to start working on your app!</Text>
+        <RoundedButton
+          backgroundColor='teal'
+          text='Next'
+          textColor='white'
+          onPress={() => setColor(randomRgb())}
+        />
+        <StatusBar style='auto' />
+      </View>
+    </ApolloProvider>
   )
 }
 
